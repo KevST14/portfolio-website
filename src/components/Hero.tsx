@@ -1,70 +1,62 @@
 "use client";
+
+import React, { useRef } from "react";
 import Image from "next/image";
-import cursor from "../assets/icon1.png";
-import lightning from "../assets/icon2.png";
-import { motion } from "framer-motion";
 import profilepic from "../assets/profilepic.png";
+import { motion } from "framer-motion";
 
 const Hero = () => {
+    const heroRef = useRef<HTMLDivElement | null>(null);
+
     return (
-        <div className="py-24 relative overflow-clip bg-[linear-gradient(to_bottom,#000,#2B1942_39%,#8F5C55_60%,#DBAF6E_80%)]">
+        <section id="hero-section" ref={heroRef} className="py-24 relative overflow-hidden bg-[#0a192f]">
+            {/* Background lines */}
+            <div className="lines">
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+            </div>
 
-            <div className="absolute rounded-[50%] w-[3000px] h-[1300px] top-[550px] left-[50%] -translate-x-1/2
-                            bg-[radial-gradient(closest-side,#000_80%,#2B1942)]"></div>
-            
-            <div className="relative">
-                <div className="font-bold text-center" style={{ lineHeight: "1.1" }}>
-                    <h1 className="text-[#98B4CE]" style={{ fontSize: "5rem" }}>Hi, I am</h1>
-                    <h1 className="text-[#E48A57]" style={{ fontSize: "5rem" }}>Kevin Steepan</h1>
-                </div>
+            {/* Radial background element */}
+            <div className="absolute rounded-full w-[3000px] h-[1300px] top-[550px] left-1/2 transform -translate-x-1/2 
+                            bg-[radial-gradient(circle, rgba(10, 25, 47, 0.8) 70%, rgba(17, 34, 64, 0.5))]"></div>
 
+            {/* Main content */}
+            <div className="relative z-10 text-center">
+                {/* Title Section */}
+                <h1 className="text-[#ccd6f6]" style={{ fontSize: "5rem" }}>
+                    Hello, I'm
+                </h1>
+                <h1 className="text-[#64ffda]" style={{ fontSize: "5rem" }}>
+                    Kevin Steepan
+                </h1>
+
+                {/* Profile description */}
+                <p className="font-medium text-center text-lg sm:text-xl max-w-[500px] mx-auto mt-8 text-[#8892b0]">
+                    I'm a passionate second-year Computer Science student at Newcastle University. With a strong interest in solving real-world problems using technology, I'm currently seeking internship opportunities in software development, particularly in the tech and finance sectors.
+                </p>
+
+                {/* Profile picture */}
                 <motion.div
-                    className="hidden md:block absolute left-[280px] top-[170px]"
-                    drag
-                    >
-                        <Image
-                        src={cursor}
-                        height="190"
-                        width="190"
-                        alt="cursor"
-                        className=""
-                        draggable="false"
-                        />
-
+                    className="flex justify-center mt-8"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                    <Image
+                        src={profilepic}
+                        alt="Kevin Steepan's profile picture"
+                        className="h-auto w-auto rounded-full shadow-lg"
+                    />
                 </motion.div>
+            </div>
+        </section>
+    );
+};
 
-                <motion.div
-                    className="hidden md:block absolute left-[220px] top-[20px]"
-                    drag
-                    >
-                        <Image
-                        src={lightning}
-                        height="120"
-                        width="120"
-                        alt="cursor"
-                        className=""
-                        draggable="false"
-                        />
-
-                </motion.div>
-            
-
-            <p className="font-bold text-center text-x1 max-w-[500px] mx-auto mt-8 text-white/80">
-                I am a Second Year Computer Science studing at Newcastle University that is currently trying to get internships in the tech and finance industry.
-            </p>
-
-            <Image
-                src={profilepic}
-                alt="profile picture"
-                className="h-auto w-auto mx-auto"
-            />
-        </div>
-
-
-
-
-        </div> 
-    )
-}
-
-export default Hero
+export default Hero;
