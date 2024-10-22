@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import profilepic from "../assets/profilepic.png";
 import { motion } from "framer-motion";
@@ -8,69 +6,61 @@ import { Space_Mono } from 'next/font/google';
 
 // Define font
 const spaceMono = Space_Mono({
-  weight: ['400', '700'],
-  subsets: ['latin'],
+    weight: ['400', '700'],
+    subsets: ['latin'],
 });
 
 const Hero = () => {
     const heroRef = useRef<HTMLDivElement | null>(null);
 
-    // Titles to cycle through in the typewriter effect
-    const titles = ["Avid Coder", "Active Lifestyle", "University Student", "Cooking Enthusiast", "Driven Developer"];
-    const [currentTitle, setCurrentTitle] = useState("");
-    const [index, setIndex] = useState(0); // To track which title is being typed
-    const [isDeleting, setIsDeleting] = useState(false); // To track typing or deleting state
-    const [typingSpeed, setTypingSpeed] = useState(150); // Speed of typing and deleting
+    // Wrap titles in useMemo to avoid dependency warning
+    const titles = useMemo(() => [
+        "Avid Coder",
+        "Active Lifestyle",
+        "University Student",
+        "Cooking Enthusiast",
+        "Driven Developer"
+    ], []);
 
-    // Typewriter Effect Logic
+    const [currentTitle, setCurrentTitle] = useState("");
+    const [index, setIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [typingSpeed, setTypingSpeed] = useState(150);
+
     useEffect(() => {
         const handleTyping = () => {
-            const current = titles[index % titles.length]; // Get the current title to type
+            const current = titles[index % titles.length];
 
             if (isDeleting) {
-                // If deleting characters
                 setCurrentTitle((prev) => prev.substring(0, prev.length - 1));
-                setTypingSpeed(50); // Faster deleting
+                setTypingSpeed(50);
             } else {
-                // Typing characters
                 setCurrentTitle((prev) => current.substring(0, prev.length + 1));
-                setTypingSpeed(150); // Normal typing speed
+                setTypingSpeed(150);
             }
 
-            // When typing is done
             if (!isDeleting && currentTitle === current) {
-                setTimeout(() => setIsDeleting(true), 1000); // Pause before starting to delete
+                setTimeout(() => setIsDeleting(true), 1000);
             } else if (isDeleting && currentTitle === "") {
                 setIsDeleting(false);
-                setIndex((prev) => prev + 1); // Move to next title
+                setIndex((prev) => prev + 1);
             }
         };
 
         const typingTimer = setTimeout(handleTyping, typingSpeed);
-
-        return () => clearTimeout(typingTimer); // Cleanup the timer on unmount
+        return () => clearTimeout(typingTimer);
     }, [currentTitle, isDeleting, typingSpeed, index, titles]);
 
     return (
         <section id="hero-section" ref={heroRef} className="py-24 relative overflow-hidden bg-[#0a192f]">
-            {/* Background lines */}
             <div className="lines">
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
+                {/* Background lines here */}
             </div>
 
-            {/* Radial background element */}
             <div className="absolute rounded-full w-[3000px] h-[1300px] top-[550px] left-1/2 transform -translate-x-1/2 
                             bg-[radial-gradient(circle, rgba(10, 25, 47, 0.8) 70%, rgba(17, 34, 64, 0.5))]"></div>
 
-            {/* Main content */}
             <div className="relative z-10 text-center">
-                {/* Title Section */}
                 <h1 className="text-[#ccd6f6]" style={{ fontSize: "6rem" }}>
                     Hello, I'm
                 </h1>
@@ -78,17 +68,15 @@ const Hero = () => {
                     Kevin Steepan
                 </h1>
 
-                {/* Typewriter effect for changing titles */}
                 <h2 className={`${spaceMono.className} text-[#64ffda]`} style={{ fontSize: "3rem", textShadow: "2px 2px 10px rgba(100, 255, 218, 0.7)" }}>
                     {currentTitle}
-                    <span className="blinking-cursor">|</span> {/* Add blinking cursor */}
+                    <span className="blinking-cursor">|</span>
                 </h2>
 
                 <p className="font-medium text-center text-lg sm:text-xl max-w-[500px] mx-auto mt-8 text-[#8892b0]">
-                    I&apos;m a passionate second-year Computer Science student at Newcastle University aiming to get internships and placements in the finance and technology industries.
+                    I&apos;m a passionate second-year Computer Science student at Newcastle University...
                 </p>
 
-                {/* Profile picture */}
                 <motion.div
                     className="flex justify-center mt-8"
                     initial={{ scale: 0.8, opacity: 0 }}
@@ -107,4 +95,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
