@@ -14,7 +14,7 @@ const Contact = () => {
                 <a
                     href="../assets/InternshipCV.pdf"  
                     download="InternshipCV.pdf" 
-                    className='bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-400 transition-colors'
+                    className='bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-blue-400 transition-colors'
                 >
                     Download CV
                 </a>
