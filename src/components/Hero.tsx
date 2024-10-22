@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import profilepic from "../assets/profilepic.png";
