@@ -12,7 +12,7 @@ const Contact = () => {
                 </div>
 
                 <a
-                    href="../assets/KSInternshipCV.pdf"  
+                    href="/KSInternshipCV.pdf"  // Updated link
                     download="KSInternshipCV.pdf" 
                     className='bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-blue-400 transition-colors'
                 >
