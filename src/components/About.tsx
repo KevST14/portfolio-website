@@ -23,7 +23,7 @@ const About = () => {
                         <Image src={book} alt="book" className="w-auto h-[130px]" />
                         <div className='flex flex-col mt-4'>
                             <h2 className='text-2xl font-bold text-white/80' style={{ fontSize: "1.75rem" }}>Interests</h2>
-                            <p className='text-lg text-white/70 mt-2'>Beyond my passion for software engineering, I am committed to maintaining a healthy lifestyle. I believe in the importance of consistency and discipline, which I practice through regular gym sessions and running. I also focus on building healthy habits to enhance my overall well-being. In my free time, I enjoy reading, traveling, and exploring new places, which gives me fresh perspectives and inspiration.</p>
+                            <p className='text-lg text-white/70 mt-2'>Beyond my passion for software engineering, I am committed to maintaining a healthy lifestyle. I believe in the importance of consistency and discipline, which I practice through regular gym sessions and running. I also focus on building healthy habits to enhance my overall well-being. In my free time, I enjoy reading, traveling, gaming and exploring new places, which gives me fresh perspectives and inspiration.</p>
                         </div>
                     </div>
                 </div>
