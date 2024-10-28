@@ -76,7 +76,7 @@ const Hero = () => {
                 </h2>
 
                 <p className="font-medium text-center text-lg sm:text-xl max-w-[500px] mx-auto mt-8 text-[#8892b0]">
-                    I&apos;m a passionate second-year Computer Science student at Newcastle University...
+                    I&apos;m a passionate second-year Computer Science student at Newcastle University, driven by a love for technology and innovation. With a strong foundation in software development and data visualisation, I thrive on solving complex problems and creating impactful solutions. As I look ahead to summer 2025, I am actively seeking internships and placements that will allow me to apply my skills in real-world projects, collaborate with industry professionals, and further my understanding of the tech landscape.
                 </p>
 
                 <motion.div
